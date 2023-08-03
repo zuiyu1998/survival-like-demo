@@ -9,12 +9,14 @@ impl Plugin for SplashPlugin {
         app.add_loading_state(
             LoadingState::new(AppState::Splash).continue_to_state(AppState::Menu),
         )
-        .add_collection_to_loading_state::<_, FontAssets>(AppState::Splash);
+        .add_collection_to_loading_state::<_, FontAssets>(AppState::Splash)
+        .add_systems(Startup, setup);
     }
 }
 
-// the following asset collections will be loaded during the State `GameState::Loading`
-// when done loading, they will be inserted as resources (see <https://github.com/NiklasEi/bevy_asset_loader>)
+fn setup(mut commands: Commands) {
+    commands.spawn(Camera2dBundle::default());
+}
 
 #[derive(AssetCollection, Resource)]
 pub struct FontAssets {

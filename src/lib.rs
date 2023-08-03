@@ -1,35 +1,29 @@
 #![allow(clippy::type_complexity)]
 
+use bevy::app::App;
+use bevy::prelude::*;
+use game::InternalGamePlugin;
+
 #[cfg(feature = "dev")]
 mod dev;
 
-mod splash;
+mod game;
+mod splash_state;
+mod ui;
 
-use crate::splash::SplashPlugin;
+mod states;
 
-use bevy::app::App;
-#[cfg(debug_assertions)]
-use bevy::prelude::*;
-
-// This example game uses States to separate logic
-// See https://bevy-cheatbook.github.io/programming/states.html
-// Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
-#[derive(States, Default, Clone, Eq, PartialEq, Debug, Hash)]
-enum AppState {
-    // Splash
-    #[default]
-    Splash,
-    // During this State the actual game logic is executed
-    InGame,
-    // ui
-    Menu,
-}
+use crate::splash_state::*;
+pub use states::*;
+pub use ui::*;
 
 pub struct GamePlugin;
 
 impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
-        app.add_state::<AppState>().add_plugins((SplashPlugin,));
+        app.add_state::<AppState>()
+            .add_state::<GameState>()
+            .add_plugins((SplashPlugin, InternalGamePlugin, MainUiPlugin));
 
         #[cfg(feature = "dev")]
         {
