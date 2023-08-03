@@ -25,6 +25,7 @@ inherits = "release"
 lto = "thin"
 
 [features]
+default = ["dev"]
 dev = [
     "bevy/bevy_dylib",
 ]
