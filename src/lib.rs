@@ -7,6 +7,7 @@ use game::InternalGamePlugin;
 #[cfg(feature = "dev")]
 mod dev;
 
+mod animator;
 mod game;
 mod splash_state;
 mod ui;
@@ -14,6 +15,7 @@ mod ui;
 mod states;
 
 use crate::splash_state::*;
+pub use animator::*;
 pub use states::*;
 pub use ui::*;
 
@@ -23,7 +25,12 @@ impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app.add_state::<AppState>()
             .add_state::<GameState>()
-            .add_plugins((SplashPlugin, InternalGamePlugin, MainUiPlugin));
+            .add_plugins((
+                SplashPlugin,
+                InternalGamePlugin,
+                MainUiPlugin,
+                SpriteAnimationPlugin,
+            ));
 
         #[cfg(feature = "dev")]
         {

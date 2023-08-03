@@ -315,6 +315,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9e1b586273c5702936fe7b7d6896644d8be71e6314cfe09d3167c95f712589e8"
 
 [[package]]
+name = "benimator"
+version = "4.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "07ff332b478b24417c1bac8d39bd90454761a4a5b73837cc014a22b78dd905a3"
+dependencies = [
+ "rustc_version",
+ "serde",
+]
+
+[[package]]
 name = "bevy"
 version = "0.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -630,6 +640,8 @@ dependencies = [
 name = "bevy_game"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
+ "benimator",
  "bevy",
  "bevy_asset_loader",
  "bevy_editor_pls",
@@ -637,6 +649,7 @@ dependencies = [
  "embed-resource",
  "image",
  "rand",
+ "serde_json",
  "winit",
 ]
 
