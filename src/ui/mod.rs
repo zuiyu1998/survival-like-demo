@@ -1,4 +1,4 @@
-use crate::{AppState, FontAssets, GameState, StateController};
+use crate::{AppState, FontAssets, StateController};
 use bevy::prelude::*;
 
 pub struct MainUiPlugin;

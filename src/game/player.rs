@@ -7,7 +7,7 @@ use super::props::{Props, VelocityUp};
 #[derive(Debug, Bundle, Default)]
 pub struct PlayerBundle {
     props: Props,
-    velocity_uo: VelocityUp,
+    velocity_up: VelocityUp,
 }
 
 pub struct PlayerPlugin;

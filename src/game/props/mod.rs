@@ -76,6 +76,7 @@ pub struct PropsPlugin;
 
 impl Plugin for PropsPlugin {
     fn build(&self, app: &mut App) {
-        app.add_plugins((BufferPlugin::<VelocityUp>::default(),));
+        app.add_plugins((BufferPlugin::<VelocityUp>::default(),))
+            .register_type::<Props>();
     }
 }
