@@ -10,7 +10,7 @@ pub struct StateController<'w> {
 impl<'a> StateController<'a> {
     pub fn start_game(&mut self) {
         self.app_state.set(AppState::InGame);
-        self.game_state.set(GameState::Playing);
+        self.game_state.set(GameState::Loading);
     }
 }
 

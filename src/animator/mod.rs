@@ -15,20 +15,26 @@ impl Plugin for SpriteAnimationPlugin {
     }
 }
 
+#[derive(Bundle, Default)]
+pub struct AnimationBundle {
+    pub animation_player: SpriteAnimationPlayer,
+    pub animation_handle: Handle<Animation>,
+}
+
 // Create the animation asset
-#[derive(TypeUuid, TypePath, Deref)]
+#[derive(TypeUuid, TypePath, Deref, Default)]
 #[uuid = "ae6a74db-f6fa-43c4-ac16-01d13b50e4c6"]
-struct Animation(HashMap<String, benimator::Animation>);
+pub struct Animation(HashMap<String, benimator::Animation>);
 
 // Create the animation state component
 #[derive(Default, Component)]
-struct AnimationPlayer {
+pub struct SpriteAnimationPlayer {
     pub is_playing: bool,
     pub animate_name: String,
     pub(crate) state: benimator::State,
 }
 
-impl AnimationPlayer {
+impl SpriteAnimationPlayer {
     pub fn play(&mut self, animate_name: &str) {
         self.animate_name = animate_name.to_owned()
     }
@@ -62,7 +68,7 @@ fn animate(
     time: Res<Time>,
     animations: Res<Assets<Animation>>,
     mut query: Query<(
-        &mut AnimationPlayer,
+        &mut SpriteAnimationPlayer,
         &mut TextureAtlasSprite,
         &Handle<Animation>,
     )>,
