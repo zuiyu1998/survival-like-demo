@@ -60,6 +60,8 @@ benimator = { version = "4.1", features = ["serde"] }
 anyhow = { version = "1.0" }
 serde_json = { version = "1.0" }
 
+bevy_ecs_ldtk = { version = "0.8" }
+
 bevy_editor_pls = { git = "https://github.com/jakobhellermann/bevy_editor_pls.git" }
 
 # keep the following in sync with Bevy's dependencies

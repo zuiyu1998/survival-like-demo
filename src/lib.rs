@@ -3,11 +3,12 @@
 use bevy::app::App;
 use bevy::prelude::*;
 use game::InternalGamePlugin;
-
 #[cfg(feature = "dev")]
 mod dev;
 
 mod animator;
+mod common;
+mod consts;
 mod game;
 mod splash_state;
 mod ui;
@@ -16,6 +17,9 @@ mod states;
 
 use crate::splash_state::*;
 pub use animator::*;
+pub use common::*;
+pub use consts::*;
+pub use game::*;
 pub use states::*;
 pub use ui::*;
 

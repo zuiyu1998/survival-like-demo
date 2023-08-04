@@ -9,13 +9,8 @@ impl Plugin for SplashPlugin {
         app.add_loading_state(
             LoadingState::new(AppState::Splash).continue_to_state(AppState::Menu),
         )
-        .add_collection_to_loading_state::<_, FontAssets>(AppState::Splash)
-        .add_systems(Startup, setup);
+        .add_collection_to_loading_state::<_, FontAssets>(AppState::Splash);
     }
-}
-
-fn setup(mut commands: Commands) {
-    commands.spawn(Camera2dBundle::default());
 }
 
 #[derive(AssetCollection, Resource)]

@@ -1,4 +1,4 @@
-use crate::{Animation, GameState};
+use crate::{GameState, PlayerAssets};
 use bevy::prelude::*;
 use bevy_asset_loader::prelude::*;
 
@@ -11,12 +11,4 @@ impl Plugin for LoadingPlugin {
         )
         .add_collection_to_loading_state::<_, PlayerAssets>(GameState::Loading);
     }
-}
-
-#[derive(AssetCollection, Resource)]
-pub struct PlayerAssets {
-    #[asset(path = "textures/player/character1.png")]
-    pub green_woman: Handle<Image>,
-    #[asset(path = "animation/player/player.animation.json")]
-    pub animation: Handle<Animation>,
 }
